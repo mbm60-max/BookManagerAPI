@@ -35,6 +35,8 @@ namespace BManagerAPi.Repositories{
 
         public async Task DeleteNoteAsync(Guid id){
             try{
+                Console.WriteLine("Deleting");
+                Console.WriteLine(id);
                 await _supabase.From<Note>().Filter("id", Supabase.Postgrest.Constants.Operator.Equals, id.ToString()).Delete();
             }catch{
                 throw new Exception("Failed to delete note");

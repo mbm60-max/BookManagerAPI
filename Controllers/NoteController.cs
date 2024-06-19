@@ -26,11 +26,11 @@ namespace BManagerAPi.Controllers{
                 }
             }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateNote([FromRoute] Guid id, [FromBody]string newContent)
+        public async Task<IActionResult> UpdateNote([FromRoute] Guid id,[FromBody] UpdateNoteRequest updateNoteRequest)
         {
             try
             {
-                await _noteService.UpdateNoteAsync(id,newContent);
+                await _noteService.UpdateNoteAsync(id, updateNoteRequest.Content);
                 return Ok();
             }
             catch (Exception ex)
@@ -39,6 +39,10 @@ namespace BManagerAPi.Controllers{
             }
         }
 
+public class UpdateNoteRequest
+{
+    public string Content { get; set; }
+}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteNote([FromRoute] Guid id)
         {
