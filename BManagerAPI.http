@@ -1,0 +1,6 @@
+@BManagerAPI_HostAddress = http://localhost:5058
+
+GET {{BManagerAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
